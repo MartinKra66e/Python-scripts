@@ -1,4 +1,5 @@
 import subprocess
+import sys
 
 def nmap_scan(ip_address):
     # Construct the Nmap command
@@ -36,6 +37,10 @@ def nmap_scan(ip_address):
     except Exception as e:
         print(f"An error occurred: {e}")
 
-# Example: Scan the IP address '192.168.1.1'
-ip_to_scan = '192.168.1.1'
-nmap_scan(ip_to_scan)
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python script_name.py <IP_address>")
+        sys.exit(1)
+
+    ip_to_scan = sys.argv[1]
+    nmap_scan(ip_to_scan)
